@@ -12,6 +12,11 @@ class Tile extends Component {
   onChange(value) {
     this.props.onChangeTileText(value, this.props.id);
   }
+
+  onClickSave(){
+    this.setState({editMode: false})
+  }
+
   render() {
     return this.state.editMode ? (
       <div className="tile">
@@ -20,9 +25,10 @@ class Tile extends Component {
           onChange={e => this.onChange(e.target.value)}
           className="tile-edit-mode__textarea"
         />
+        <button onClick={() => this.onClickSave()}>save</button>
       </div>
     ) : (
-      <div className="tile">{this.state.habitName}</div>
+      <div className="tile">{this.props.habitName}</div>
     );
   }
 }

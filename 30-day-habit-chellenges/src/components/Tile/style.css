@@ -1,16 +1,19 @@
 .tile{
-    font-size: 30px;
     min-height: 20vh;
     color: #282c34;
     background-color: #61dbfb;
     flex: 1 1 30%;
     margin:5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
 }
 
 .tile-edit-mode__textarea{
     background-color: #61dbfb;
     width: calc(100% - 10px);
     border: 0px;
-    min-height: calc(20vh - 10px);
+    min-height: calc(20vh - 40px);
     resize: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
 }
