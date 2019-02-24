@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Tile from "./components/Tile";
-
+import Tiles from './components/Tiles';
 class App extends Component {
   render() {
     return (
@@ -11,21 +10,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           30 Days habit challanges
         </header>
-        <div className="wrapper">
-          <div className="content">
-            <Tile />
-            <Tile />
-            <Tile />
-
-            <Tile />
-            <Tile />
-            <Tile />
-
-            <Tile />
-            <Tile />
-            <Tile />
-          </div>
-        </div>
+        <Tiles />
+        
       </div>
     );
   }

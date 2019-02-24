@@ -6,3 +6,11 @@
     flex: 1 1 30%;
     margin:5px;
 }
+
+.tile-edit-mode__textarea{
+    background-color: #61dbfb;
+    width: calc(100% - 10px);
+    border: 0px;
+    min-height: calc(20vh - 10px);
+    resize: none;
+}

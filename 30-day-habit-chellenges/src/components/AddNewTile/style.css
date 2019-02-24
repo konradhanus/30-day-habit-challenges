@@ -1,0 +1,8 @@
+.add-new-tile{
+    font-size: 30px;
+    min-height: 20vh;
+    color: #282c34;
+    background-color: white;
+    flex: 1 1 30%;
+    margin:5px;
+}
