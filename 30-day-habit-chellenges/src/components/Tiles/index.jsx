@@ -3,19 +3,29 @@ import "./style.css";
 import Tile from "../Tile";
 import AddNewTile from "../AddNewTile";
 class Tiles extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tileNumber: []
+    };
+  }
+
+  onClickAddTile() {
+    const tileNumber = this.state.tileNumber;
+    console.log("aaa");
+    tileNumber.push({});
+    this.setState({ tileNumber: tileNumber });
+  }
   render() {
     return (
       <div className="content">
-        <Tile />
-        <Tile />
+        {this.state.tileNumber.map((tile, i) => (
+          <Tile key={i} />
+        ))}
 
-        <Tile />
-        <Tile />
-        <Tile />
-
-        <Tile />
-        <Tile />
-        <AddNewTile />
+        {this.state.tileNumber.length !== 9 && (
+          <AddNewTile onClickAddTile={() => this.onClickAddTile()} />
+        )}
       </div>
     );
   }

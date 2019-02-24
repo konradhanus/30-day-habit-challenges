@@ -4,7 +4,7 @@ import "./style.css";
 class AddNewTile extends Component {
   render() {
     return(
-        <div className="add-new-tile">add habit</div>
+        <div className="add-new-tile" onClick={() => this.props.onClickAddTile()}>add habit</div>
     );
   }
 }
