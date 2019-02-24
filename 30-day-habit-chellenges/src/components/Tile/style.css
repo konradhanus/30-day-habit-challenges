@@ -8,8 +8,31 @@
     font-size: 18px;
 }
 
+.tile-hover{
+    min-height: 20vh;
+    color: #282c34;
+    background-color: #00FF00;
+    flex: 1 1 30%;
+    margin:5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+.tile-hover-edit{
+    background-color: yellow;
+}
+
+.tile-hover-delete{
+    background-color: red;
+}
+
+.fas{
+    cursor: pointer;
+}
+
+
 .tile-edit-mode__textarea{
-    background-color: #61dbfb;
+    background-color: yellow;
     width: calc(100% - 10px);
     border: 0px;
     min-height: calc(20vh - 40px);

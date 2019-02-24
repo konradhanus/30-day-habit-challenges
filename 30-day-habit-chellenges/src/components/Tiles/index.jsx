@@ -6,18 +6,20 @@ class Tiles extends Component {
   constructor() {
     super();
     this.state = {
-      habbits: []
+      habbits: [{ habitName: "" }]
     };
   }
 
   componentWillMount() {
     let habbits = localStorage.getItem("habits");
     if (!habbits) {
-      habbits = [];
+      habbits = [{ habitName: "" }];
+      this.setState({ habbits: habbits });
     } else {
-      this.setState({ habbits: JSON.parse(habbits) });
+     // this.setState({ habbits: JSON.parse(habbits) });
     }
   }
+
   onClickAddTile() {
     const habbits = this.state.habbits;
     habbits.push({
@@ -35,6 +37,17 @@ class Tiles extends Component {
     localStorage.setItem("habits", JSON.stringify(habbits));
   };
 
+  onClickRemove = id => {
+    const habbits = this.state.habbits;
+    if (this.state.habbits.length !== 1) {
+      delete habbits[id];
+      
+    }else{
+      habbits[id].habitName = "";
+    }
+      this.setState({ habbits: habbits });
+      localStorage.setItem("habits", JSON.stringify(habbits));
+  };
   render() {
     return (
       <div className="content">
@@ -44,6 +57,7 @@ class Tiles extends Component {
             onChangeTileText={this.onChangeTileText}
             id={i}
             habitName={tile.habitName}
+            onClickRemove={this.onClickRemove}
           />
         ))}
 
