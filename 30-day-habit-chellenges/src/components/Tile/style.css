@@ -26,6 +26,10 @@
     background-color: red;
 }
 
+.tile-hover-approve{
+    background-color: #00FF00;
+}
+
 .fas{
     cursor: pointer;
 }

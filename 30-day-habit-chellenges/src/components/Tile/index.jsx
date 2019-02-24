@@ -62,10 +62,11 @@ class Tile extends Component {
       <React.Fragment>
         {this.state.hover ? (
           <div
-            className={this.state.remove ? "tile-hover tile-hover-delete": this.state.edit ? "tile-hover tile-hover-edit": "tile-hover"}
+            className={this.state.remove ? "tile-hover tile-hover-delete": 
+            this.state.edit ? "tile-hover tile-hover-edit": "tile-hover tile-hover-approve"}
             onMouseLeave={() => this.onMouseLeaveTile()}
           >
-            <i className="fas fa-check fa-6x" /> <br />
+            <i className="fas fa-check fa-6x"  onClick={()=>this.props.onClickDone(this.props.id)}/> <br />
             <i className="fas fa-edit fa-2x" 
             onClick={()=>this.onClickEditMode()}
             onMouseEnter={() => this.onMouseEnterTileEdit()}
@@ -77,7 +78,7 @@ class Tile extends Component {
             onMouseLeave={() => this.onMouseLeaveTileRemove()} />
           </div>
         ) : (
-          <div className="tile" 
+          <div className={!this.props.done ? "tile" : "tile tile-hover-approve"} 
           onMouseOver={() => this.onMouseEnterTile()}>
             {this.props.habitName}
           </div>

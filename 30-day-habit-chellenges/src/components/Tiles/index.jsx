@@ -13,10 +13,10 @@ class Tiles extends Component {
   componentWillMount() {
     let habbits = localStorage.getItem("habits");
     if (!habbits) {
-      habbits = [{ habitName: "" }];
+      habbits = [{ habitName: "", done: false }];
       this.setState({ habbits: habbits });
     } else {
-     // this.setState({ habbits: JSON.parse(habbits) });
+      // this.setState({ habbits: JSON.parse(habbits) });
     }
   }
 
@@ -24,7 +24,8 @@ class Tiles extends Component {
     const habbits = this.state.habbits;
     habbits.push({
       habitName:
-        "Od Kiedy:\nCo będę robić:\nJak często:\nO której godzinie:\nJak to będę robić:\nDo kiedy będę to robić:\n"
+        "Od Kiedy:\nCo będę robić:\nJak często:\nO której godzinie:\nJak to będę robić:\nDo kiedy będę to robić:\n",
+      done: false
     });
     this.setState({ habbits: habbits });
   }
@@ -37,16 +38,23 @@ class Tiles extends Component {
     localStorage.setItem("habits", JSON.stringify(habbits));
   };
 
+  onClickDone = (id) => {
+    const habbits = this.state.habbits;
+    habbits[id].done = true;
+    this.setState({ habbits: habbits });
+
+    localStorage.setItem("habits", JSON.stringify(habbits));
+  };
+
   onClickRemove = id => {
     const habbits = this.state.habbits;
     if (this.state.habbits.length !== 1) {
       delete habbits[id];
-      
-    }else{
+    } else {
       habbits[id].habitName = "";
     }
-      this.setState({ habbits: habbits });
-      localStorage.setItem("habits", JSON.stringify(habbits));
+    this.setState({ habbits: habbits });
+    localStorage.setItem("habits", JSON.stringify(habbits));
   };
   render() {
     return (
@@ -57,7 +65,9 @@ class Tiles extends Component {
             onChangeTileText={this.onChangeTileText}
             id={i}
             habitName={tile.habitName}
-            onClickRemove={this.onClickRemove}
+            done={tile.done}
+            onClickRemove={this.onClickRemove} 
+            onClickDone={this.onClickDone}
           />
         ))}
 
