@@ -6,24 +6,48 @@ class Tiles extends Component {
   constructor() {
     super();
     this.state = {
-      tileNumber: []
+      habbits: []
     };
   }
 
-  onClickAddTile() {
-    const tileNumber = this.state.tileNumber;
-    console.log("aaa");
-    tileNumber.push({});
-    this.setState({ tileNumber: tileNumber });
+  componentWillMount() {
+    let habbits = localStorage.getItem("habits");
+    if (!habbits) {
+      habbits = [];
+    } else {
+      this.setState({ habbits: JSON.parse(habbits) });
+    }
   }
+  onClickAddTile() {
+    const habbits = this.state.habbits;
+    habbits.push({
+      habitName:
+        "Od Kiedy:\nCo będę robić:\nJak często:\nO której godzinie:\nJak to będę robić:\nDo kiedy będę to robić:\n"
+    });
+    this.setState({ habbits: habbits });
+  }
+
+  onChangeTileText = (text, id) => {
+    const habbits = this.state.habbits;
+    habbits[id].habitName = text;
+    this.setState({ habbits: habbits });
+
+    localStorage.setItem("habits", JSON.stringify(habbits));
+  };
+
   render() {
     return (
       <div className="content">
-        {this.state.tileNumber.map((tile, i) => (
-          <Tile key={i} />
+        {this.state.habbits.map((tile, i) => (
+          <Tile
+            key={i}
+            onChangeTileText={this.onChangeTileText}
+            id={i}
+            habitName={tile.habitName}
+          />
         ))}
 
-        {this.state.tileNumber.length !== 9 && (
+        {this.state.habbits.length !== 9 && (
           <AddNewTile onClickAddTile={() => this.onClickAddTile()} />
         )}
       </div>
